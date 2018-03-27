@@ -34,10 +34,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back-main" translatesAutoresizingMaskIntoConstraints="NO" id="KTU-Zu-wp5">
+                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back-main" translatesAutoresizingMaskIntoConstraints="NO" id="KTU-Zu-wp5">
                                 <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="G3R-N8-VR3">
+                            <stackView opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="G3R-N8-VR3">
                                 <rect key="frame" x="162" y="194" width="700" height="200"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEt-Jk-WWO">
@@ -75,7 +75,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="saP-5k-hpx">
+                            <stackView opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="saP-5k-hpx">
                                 <rect key="frame" x="387" y="484" width="250" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9M-et-p35">
@@ -150,7 +150,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="saP-5k-hpx" firstAttribute="leading" secondItem="HUy-nc-uhQ" secondAttribute="leading" constant="387" id="3CR-Hh-vsh"/>
                             <constraint firstItem="Tks-tj-FaI" firstAttribute="top" secondItem="saP-5k-hpx" secondAttribute="bottom" constant="70" id="7Ql-8b-TN1"/>
                             <constraint firstItem="KTU-Zu-wp5" firstAttribute="leading" secondItem="HUy-nc-uhQ" secondAttribute="leading" id="He6-2D-Q9n"/>
                             <constraint firstItem="G3R-N8-VR3" firstAttribute="top" secondItem="HUy-nc-uhQ" secondAttribute="top" constant="130" id="KFp-ZB-aKh"/>
@@ -162,8 +161,8 @@
                             <constraint firstItem="saP-5k-hpx" firstAttribute="top" secondItem="G3R-N8-VR3" secondAttribute="bottom" constant="90" id="a3A-50-q8k"/>
                             <constraint firstItem="Tks-tj-FaI" firstAttribute="leading" secondItem="HUy-nc-uhQ" secondAttribute="leading" constant="400" id="bAX-cv-J6q"/>
                             <constraint firstItem="KTU-Zu-wp5" firstAttribute="top" secondItem="HUy-nc-uhQ" secondAttribute="top" id="cku-IZ-Vp2"/>
-                            <constraint firstItem="HUy-nc-uhQ" firstAttribute="trailing" secondItem="saP-5k-hpx" secondAttribute="trailing" constant="387" id="fae-lj-uHc"/>
                             <constraint firstAttribute="trailing" secondItem="KTU-Zu-wp5" secondAttribute="trailing" id="h3B-Ax-JLD"/>
+                            <constraint firstItem="saP-5k-hpx" firstAttribute="centerX" secondItem="bMP-At-9Lc" secondAttribute="centerX" id="p00-8S-Z45"/>
                             <constraint firstItem="HUy-nc-uhQ" firstAttribute="trailing" secondItem="G3R-N8-VR3" secondAttribute="trailing" constant="162" id="pbl-Pb-Iot"/>
                             <constraint firstItem="SLB-Jf-Cu7" firstAttribute="leading" secondItem="HUy-nc-uhQ" secondAttribute="leading" constant="387" id="yJv-w4-JA1"/>
                         </constraints>
