@@ -8,22 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		55189810206A6F170075BF86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5518980F206A6F170075BF86 /* AppDelegate.swift */; };
-		55189812206A6F170075BF86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55189811206A6F170075BF86 /* ViewController.swift */; };
+		55189812206A6F170075BF86 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55189811206A6F170075BF86 /* MainVC.swift */; };
 		55189815206A6F170075BF86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55189813206A6F170075BF86 /* Main.storyboard */; };
 		55189818206A6F170075BF86 /* kids_joy_center.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55189816206A6F170075BF86 /* kids_joy_center.xcdatamodeld */; };
 		5518981A206A6F170075BF86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55189819206A6F170075BF86 /* Assets.xcassets */; };
 		5518981D206A6F170075BF86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5518981B206A6F170075BF86 /* LaunchScreen.storyboard */; };
+		55189825206A9B790075BF86 /* MemoryGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55189824206A9B790075BF86 /* MemoryGameVC.swift */; };
+		55189827206A9B8B0075BF86 /* SortingGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55189826206A9B8B0075BF86 /* SortingGameVC.swift */; };
+		55189829206A9BA00075BF86 /* BaloonGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55189828206A9BA00075BF86 /* BaloonGameVC.swift */; };
+		55189830206AA0660075BF86 /* GameSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5518982F206AA0660075BF86 /* GameSelectorDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5518980C206A6F170075BF86 /* kids joy center.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kids joy center.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5518980F206A6F170075BF86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		55189811206A6F170075BF86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		55189811206A6F170075BF86 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		55189814206A6F170075BF86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55189817206A6F170075BF86 /* kids_joy_center.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = kids_joy_center.xcdatamodel; sourceTree = "<group>"; };
 		55189819206A6F170075BF86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5518981C206A6F170075BF86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5518981E206A6F170075BF86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55189824206A9B790075BF86 /* MemoryGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGameVC.swift; sourceTree = "<group>"; };
+		55189826206A9B8B0075BF86 /* SortingGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingGameVC.swift; sourceTree = "<group>"; };
+		55189828206A9BA00075BF86 /* BaloonGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaloonGameVC.swift; sourceTree = "<group>"; };
+		5518982F206AA0660075BF86 /* GameSelectorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectorDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,59 @@
 		5518980E206A6F170075BF86 /* kids joy center */ = {
 			isa = PBXGroup;
 			children = (
-				5518980F206A6F170075BF86 /* AppDelegate.swift */,
-				55189811206A6F170075BF86 /* ViewController.swift */,
-				55189813206A6F170075BF86 /* Main.storyboard */,
-				55189819206A6F170075BF86 /* Assets.xcassets */,
-				5518981B206A6F170075BF86 /* LaunchScreen.storyboard */,
 				5518981E206A6F170075BF86 /* Info.plist */,
 				55189816206A6F170075BF86 /* kids_joy_center.xcdatamodeld */,
+				55189819206A6F170075BF86 /* Assets.xcassets */,
+				5518981B206A6F170075BF86 /* LaunchScreen.storyboard */,
+				5518980F206A6F170075BF86 /* AppDelegate.swift */,
+				5518982A206A9CE60075BF86 /* Main */,
+				5518982B206A9D070075BF86 /* MemoryGame */,
+				5518982C206A9D130075BF86 /* SortingGame */,
+				5518982D206A9D1F0075BF86 /* BaloonGame */,
+				5518982E206AA0090075BF86 /* Helpers */,
 			);
 			path = "kids joy center";
+			sourceTree = "<group>";
+		};
+		5518982A206A9CE60075BF86 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				55189811206A6F170075BF86 /* MainVC.swift */,
+				55189813206A6F170075BF86 /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		5518982B206A9D070075BF86 /* MemoryGame */ = {
+			isa = PBXGroup;
+			children = (
+				55189824206A9B790075BF86 /* MemoryGameVC.swift */,
+			);
+			path = MemoryGame;
+			sourceTree = "<group>";
+		};
+		5518982C206A9D130075BF86 /* SortingGame */ = {
+			isa = PBXGroup;
+			children = (
+				55189826206A9B8B0075BF86 /* SortingGameVC.swift */,
+			);
+			path = SortingGame;
+			sourceTree = "<group>";
+		};
+		5518982D206A9D1F0075BF86 /* BaloonGame */ = {
+			isa = PBXGroup;
+			children = (
+				55189828206A9BA00075BF86 /* BaloonGameVC.swift */,
+			);
+			path = BaloonGame;
+			sourceTree = "<group>";
+		};
+		5518982E206AA0090075BF86 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5518982F206AA0660075BF86 /* GameSelectorDelegate.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +192,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				55189818206A6F170075BF86 /* kids_joy_center.xcdatamodeld in Sources */,
-				55189812206A6F170075BF86 /* ViewController.swift in Sources */,
+				55189830206AA0660075BF86 /* GameSelectorDelegate.swift in Sources */,
+				55189825206A9B790075BF86 /* MemoryGameVC.swift in Sources */,
+				55189812206A6F170075BF86 /* MainVC.swift in Sources */,
+				55189829206A9BA00075BF86 /* BaloonGameVC.swift in Sources */,
+				55189827206A9B8B0075BF86 /* SortingGameVC.swift in Sources */,
 				55189810206A6F170075BF86 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

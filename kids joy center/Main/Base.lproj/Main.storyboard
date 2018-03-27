@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-1159" y="46"/>
         </scene>
-        <!--View Controller-->
+        <!--MainVC-->
         <scene sceneID="Yma-rD-Tpr">
             <objects>
-                <viewController id="xp3-Fa-aoU" sceneMemberID="viewController">
+                <viewController id="xp3-Fa-aoU" customClass="MainVC" customModule="kids_joy_center" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bMP-At-9Lc">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,6 +47,9 @@
                                             <constraint firstAttribute="height" constant="200" id="T2J-pX-tyj"/>
                                         </constraints>
                                         <state key="normal" image="memory"/>
+                                        <connections>
+                                            <action selector="memoryBtnPushed:" destination="xp3-Fa-aoU" eventType="touchUpInside" id="lBs-12-hFd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgE-Ul-YAe">
                                         <rect key="frame" x="250" y="0.0" width="200" height="200"/>
@@ -55,6 +58,9 @@
                                             <constraint firstAttribute="height" constant="200" id="a99-Kp-GUA"/>
                                         </constraints>
                                         <state key="normal" image="sorting-icon"/>
+                                        <connections>
+                                            <action selector="sortingBtnPushed:" destination="xp3-Fa-aoU" eventType="touchUpInside" id="M1n-Cq-YyX"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hg-sp-aCl">
                                         <rect key="frame" x="500" y="0.0" width="200" height="200"/>
@@ -63,35 +69,47 @@
                                             <constraint firstAttribute="height" constant="200" id="qoH-qy-3H2"/>
                                         </constraints>
                                         <state key="normal" image="balloon-game-logo1"/>
+                                        <connections>
+                                            <action selector="balloonBtnPushed:" destination="xp3-Fa-aoU" eventType="touchUpInside" id="Qra-3F-UB1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="saP-5k-hpx">
                                 <rect key="frame" x="387" y="484" width="250" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9M-et-p35">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9M-et-p35">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="h5k-UL-mRs"/>
                                             <constraint firstAttribute="height" constant="50" id="nkE-Rh-MjU"/>
                                         </constraints>
                                         <state key="normal" image="easy"/>
+                                        <connections>
+                                            <action selector="easyBtnPushed:" destination="xp3-Fa-aoU" eventType="touchUpInside" id="Hyb-RK-pOc"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHe-xG-RRU">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHe-xG-RRU">
                                         <rect key="frame" x="100" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="4iR-W4-9ri"/>
                                             <constraint firstAttribute="height" constant="50" id="UcL-TG-skv"/>
                                         </constraints>
                                         <state key="normal" image="medium"/>
+                                        <connections>
+                                            <action selector="mediumBtnPushed:" destination="xp3-Fa-aoU" eventType="touchUpInside" id="Xpb-y2-vT3"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0i1-SP-KWA">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0i1-SP-KWA">
                                         <rect key="frame" x="200" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="H69-VO-JbS"/>
                                             <constraint firstAttribute="width" constant="50" id="mXS-Pu-3eX"/>
                                         </constraints>
                                         <state key="normal" image="hard"/>
+                                        <connections>
+                                            <action selector="hardBtnPushed:" destination="xp3-Fa-aoU" eventType="touchUpInside" id="baN-0i-C1S"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -118,13 +136,16 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tks-tj-FaI">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tks-tj-FaI">
                                 <rect key="frame" x="400" y="604" width="224" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="224" id="JFS-zK-xD0"/>
                                     <constraint firstAttribute="height" constant="100" id="adJ-Is-pxJ"/>
                                 </constraints>
                                 <state key="normal" image="PlayButton"/>
+                                <connections>
+                                    <action selector="playBtnPushed:" destination="xp3-Fa-aoU" eventType="touchUpInside" id="KX4-FC-IdE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -149,10 +170,67 @@
                         <viewLayoutGuide key="safeArea" id="HUy-nc-uhQ"/>
                     </view>
                     <navigationItem key="navigationItem" id="vcV-G7-MJd"/>
+                    <connections>
+                        <outlet property="balloonBtn" destination="0Hg-sp-aCl" id="eEP-ip-RFR"/>
+                        <outlet property="easyBtn" destination="r9M-et-p35" id="BXE-fz-exU"/>
+                        <outlet property="hardBtn" destination="0i1-SP-KWA" id="wUK-3b-Fac"/>
+                        <outlet property="mediumBtn" destination="KHe-xG-RRU" id="ywh-N0-U14"/>
+                        <outlet property="memoryBtn" destination="GEt-Jk-WWO" id="zaU-Q7-Bhs"/>
+                        <outlet property="playBtn" destination="Tks-tj-FaI" id="yX3-20-si5"/>
+                        <outlet property="sortingBtn" destination="mgE-Ul-YAe" id="jkT-ic-Adl"/>
+                        <segue destination="4s0-kZ-Uty" kind="show" identifier="toMemoryGameVC" id="uSc-qY-Ke9"/>
+                        <segue destination="GQ2-ZH-NVW" kind="show" identifier="toSortingGameVC" id="D85-Nk-KZC"/>
+                        <segue destination="2jI-jS-umz" kind="show" identifier="toBaloonGameVC" id="SAZ-bj-Teg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ro-BO-m11" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-393.1640625" y="44.53125"/>
+        </scene>
+        <!--Memory GameVC-->
+        <scene sceneID="gJj-fq-QUg">
+            <objects>
+                <viewController id="4s0-kZ-Uty" customClass="MemoryGameVC" customModule="kids_joy_center" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3C0-cf-ZMd">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="mEl-Ke-ucw"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s7b-kT-vDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="660" y="45"/>
+        </scene>
+        <!--Sorting GameVC-->
+        <scene sceneID="NXt-px-nQc">
+            <objects>
+                <viewController id="GQ2-ZH-NVW" customClass="SortingGameVC" customModule="kids_joy_center" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NUX-Yh-gDB">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5fn-8o-iWg"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X3l-Ip-xfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="660" y="796"/>
+        </scene>
+        <!--Baloon GameVC-->
+        <scene sceneID="kx5-Ah-4qm">
+            <objects>
+                <viewController id="2jI-jS-umz" customClass="BaloonGameVC" customModule="kids_joy_center" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="inE-CC-ak2">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cSS-Gi-Drt"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JaS-EX-ffW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="660" y="1609"/>
         </scene>
     </scenes>
     <resources>
