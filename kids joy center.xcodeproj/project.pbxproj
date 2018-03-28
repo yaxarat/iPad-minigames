@@ -17,6 +17,11 @@
 		55189827206A9B8B0075BF86 /* SortingGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55189826206A9B8B0075BF86 /* SortingGameVC.swift */; };
 		55189829206A9BA00075BF86 /* BaloonGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55189828206A9BA00075BF86 /* BaloonGameVC.swift */; };
 		55189830206AA0660075BF86 /* GameSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5518982F206AA0660075BF86 /* GameSelectorDelegate.swift */; };
+		55C5AD16206B39AB006BB191 /* TimerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5AD15206B39AB006BB191 /* TimerDelegate.swift */; };
+		55C5AD18206B3A8E006BB191 /* ScoreTrackerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5AD17206B3A8E006BB191 /* ScoreTrackerDelegate.swift */; };
+		55C5AD1C206B45DF006BB191 /* CardsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5AD1B206B45DF006BB191 /* CardsDelegate.swift */; };
+		55C5AD1E206B45FC006BB191 /* CardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5AD1D206B45FC006BB191 /* CardDelegate.swift */; };
+		55C5AD20206B4C67006BB191 /* AlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5AD1F206B4C67006BB191 /* AlertDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,11 @@
 		55189826206A9B8B0075BF86 /* SortingGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingGameVC.swift; sourceTree = "<group>"; };
 		55189828206A9BA00075BF86 /* BaloonGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaloonGameVC.swift; sourceTree = "<group>"; };
 		5518982F206AA0660075BF86 /* GameSelectorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectorDelegate.swift; sourceTree = "<group>"; };
+		55C5AD15206B39AB006BB191 /* TimerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDelegate.swift; sourceTree = "<group>"; };
+		55C5AD17206B3A8E006BB191 /* ScoreTrackerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTrackerDelegate.swift; sourceTree = "<group>"; };
+		55C5AD1B206B45DF006BB191 /* CardsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsDelegate.swift; sourceTree = "<group>"; };
+		55C5AD1D206B45FC006BB191 /* CardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDelegate.swift; sourceTree = "<group>"; };
+		55C5AD1F206B4C67006BB191 /* AlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				55189824206A9B790075BF86 /* MemoryGameVC.swift */,
+				55C5AD1B206B45DF006BB191 /* CardsDelegate.swift */,
+				55C5AD1D206B45FC006BB191 /* CardDelegate.swift */,
 			);
 			path = MemoryGame;
 			sourceTree = "<group>";
@@ -115,6 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				5518982F206AA0660075BF86 /* GameSelectorDelegate.swift */,
+				55C5AD15206B39AB006BB191 /* TimerDelegate.swift */,
+				55C5AD17206B3A8E006BB191 /* ScoreTrackerDelegate.swift */,
+				55C5AD1F206B4C67006BB191 /* AlertDelegate.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -192,7 +207,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				55189818206A6F170075BF86 /* kids_joy_center.xcdatamodeld in Sources */,
+				55C5AD20206B4C67006BB191 /* AlertDelegate.swift in Sources */,
 				55189830206AA0660075BF86 /* GameSelectorDelegate.swift in Sources */,
+				55C5AD18206B3A8E006BB191 /* ScoreTrackerDelegate.swift in Sources */,
+				55C5AD16206B39AB006BB191 /* TimerDelegate.swift in Sources */,
+				55C5AD1C206B45DF006BB191 /* CardsDelegate.swift in Sources */,
+				55C5AD1E206B45FC006BB191 /* CardDelegate.swift in Sources */,
 				55189825206A9B790075BF86 /* MemoryGameVC.swift in Sources */,
 				55189812206A6F170075BF86 /* MainVC.swift in Sources */,
 				55189829206A9BA00075BF86 /* BaloonGameVC.swift in Sources */,
