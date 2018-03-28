@@ -97,23 +97,34 @@ class MainVC: UIViewController {
                 if i == 0 {
                     let newHS = ScoreTracker(gameType: "Memory", score: 0)
                     allScores[i][j] = newHS
-                    updateDatabase()
+                    update()
                 } else if i == 1 {
                     let newHS = ScoreTracker(gameType: "Sort", score: 0)
                     allScores[i][j] = newHS
-                    updateDatabase()
+                    update()
                 } else if i == 2 {
                     let newHS = ScoreTracker(gameType: "Balloon", score: 0)
                     allScores[i][j] = newHS
-                    updateDatabase()
+                    update()
                 }
             }
         }
-        outputData()
+        showTable()
         
     }
     
-    func outputData() {
+    func update(){
+        let highScoreData = NSKeyedArchiver.archivedData(withRootObject: allScores)
+        UserDefaults.standard.set(highScoreData, forKey: "allScores")
+        UserDefaults.standard.synchronize()
+    }
+    
+    func resetDefaults() {
+        UserDefaults.standard.removeObject(forKey: "allScores")
+        UserDefaults.standard.synchronize()
+    }
+    
+    func showTable() {
         for i in 0..<allScores.count {
             for j in 0..<allScores[i].count{
                 print(allScores[i][j].game)
@@ -122,16 +133,7 @@ class MainVC: UIViewController {
         }
     }
     
-    func resetDefaults() {
-        UserDefaults.standard.removeObject(forKey: "allScores")
-        UserDefaults.standard.synchronize()
-    }
-    
-    func updateDatabase(){
-        let highScoreData = NSKeyedArchiver.archivedData(withRootObject: allScores)
-        UserDefaults.standard.set(highScoreData, forKey: "allScores")
-        UserDefaults.standard.synchronize()
-    }
+
     
     
     
