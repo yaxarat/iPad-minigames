@@ -168,7 +168,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HUy-nc-uhQ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vcV-G7-MJd"/>
+                    <navigationItem key="navigationItem" id="vcV-G7-MJd">
+                        <barButtonItem key="rightBarButtonItem" title="High Scores" id="dgG-6e-ROn">
+                            <connections>
+                                <action selector="displayScores:" destination="xp3-Fa-aoU" id="Z34-qy-o3I"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="balloonBtn" destination="0Hg-sp-aCl" id="eEP-ip-RFR"/>
                         <outlet property="easyBtn" destination="r9M-et-p35" id="BXE-fz-exU"/>

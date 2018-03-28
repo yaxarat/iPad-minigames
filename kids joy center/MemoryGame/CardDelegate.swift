@@ -11,5 +11,4 @@ import Foundation
 class Card {
     var image: Int?
     var cardIdentifier: Int?
-    
-}
+    }

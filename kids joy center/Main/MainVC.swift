@@ -18,12 +18,129 @@ class MainVC: UIViewController {
     @IBOutlet weak var hardBtn: UIButton!
     @IBOutlet weak var playBtn: UIButton!
     
+    let highScoreView = UIView(frame: CGRect(x: 300, y: 100, width: 400, height: 600))
+    let highScoreExit = UIButton(frame: CGRect(x: 20, y: 560, width: 60, height: 30))
+    var memoryHighScores = [ScoreTracker](repeatElement(ScoreTracker(gameType: "Memory", score: 0), count: 5))
+    var sortingHighScores = [ScoreTracker](repeatElement(ScoreTracker(gameType: "Sort", score: 0), count: 5))
+    var balloonHighScores = [ScoreTracker](repeatElement(ScoreTracker(gameType: "Balloon",score: 0), count: 5))
     var selectedGame = GameSelector()
-    //var allScores = [[ScoreTracker!]]
-        
+    var allScores: [[ScoreTracker]]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupHighScore()
     }
+    
+    // For highscore button
+    @IBAction func displayScores(_ sender: UIBarButtonItem) {
+        if !highScoreView.isDescendant(of: self.view){
+            LoadHighScore()
+        }
+    }
+    
+    // Loads highscore pop up
+    func setupHighScore() {
+        allScores = [memoryHighScores, sortingHighScores, balloonHighScores]
+        
+        if let readAllScores = UserDefaults.standard.object(forKey: "allScores") as? Data {
+            allScores = NSKeyedUnarchiver.unarchiveObject(with: readAllScores) as! [[ScoreTracker]]
+        } else {
+            setHighScore()
+        }
+    }
+    
+    // Opens highscore pop up
+    func LoadHighScore() {
+        highScoreView.backgroundColor = UIColor(red: 153/255, green: 204/255, blue: 255/255, alpha: 0.9)
+        self.view.addSubview(highScoreView)
+        
+        highScoreExit.setTitle("Back", for: .normal)
+        highScoreExit.setTitleColor(UIColor.white, for: .normal)
+        highScoreExit.addTarget(self, action: #selector(closeHighScore(sender:)), for: .touchUpInside)
+        highScoreView.addSubview(highScoreExit)
+        highScoreView.addSubview(entry(message: "High Scores:", yCoordinate: 30))
+        highScoreView.addSubview(entry(message: "Memory Game", yCoordinate: 60))
+        highScoreView.addSubview(entry(message: "Sorting Game", yCoordinate: 230))
+        highScoreView.addSubview(entry(message: "Balloon Game", yCoordinate: 410))
+        
+        // Shows scores
+        displayScore(gameType: 0, Location: 85, view: highScoreView)
+        displayScore(gameType: 1, Location: 255, view: highScoreView)
+        displayScore(gameType: 2, Location: 435, view: highScoreView)
+    }
+    
+    // Closes highscore pop up
+    @objc func closeHighScore(sender: UIButton) {
+        highScoreView.removeFromSuperview()
+    }
+    
+    // Display function for the score presentation
+    func displayScore(gameType: Int, Location: Int, view: UIView) {
+        for i in 0..<5 {
+            let currentScore = String(describing: allScores[gameType][i].score)
+            view.addSubview(entry(message:currentScore, yCoordinate: Location + (i*30)))
+        }
+    }
+    
+    // Writes the score entries
+    func entry(message: String, yCoordinate: Int) -> UILabel {
+        let highscoreEntry = UILabel(frame: CGRect(x: 100, y: yCoordinate, width: 200, height: 30))
+        highscoreEntry.textAlignment = .center
+        highscoreEntry.textColor = UIColor.white
+        highscoreEntry.text = message
+        return highscoreEntry
+    }
+    
+    func setHighScore() {
+        for i in 0..<allScores.count {
+            for j in 0..<allScores[i].count{
+                if i == 0 {
+                    let newHS = ScoreTracker(gameType: "Memory", score: 0)
+                    allScores[i][j] = newHS
+                    updateDatabase()
+                } else if i == 1 {
+                    let newHS = ScoreTracker(gameType: "Sort", score: 0)
+                    allScores[i][j] = newHS
+                    updateDatabase()
+                } else if i == 2 {
+                    let newHS = ScoreTracker(gameType: "Balloon", score: 0)
+                    allScores[i][j] = newHS
+                    updateDatabase()
+                }
+            }
+        }
+        outputData()
+        
+    }
+    
+    func outputData() {
+        for i in 0..<allScores.count {
+            for j in 0..<allScores[i].count{
+                print(allScores[i][j].game)
+                print("\(allScores[i][j].score)")
+            }
+        }
+    }
+    
+    func resetDefaults() {
+        UserDefaults.standard.removeObject(forKey: "allScores")
+        UserDefaults.standard.synchronize()
+    }
+    
+    func updateDatabase(){
+        let highScoreData = NSKeyedArchiver.archivedData(withRootObject: allScores)
+        UserDefaults.standard.set(highScoreData, forKey: "allScores")
+        UserDefaults.standard.synchronize()
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     @IBAction func memoryBtnPushed(_ sender: UIButton) {
         gameChoiceAction(sender, "Memory")
@@ -35,13 +152,13 @@ class MainVC: UIViewController {
         gameChoiceAction(sender, "Balloon")
     }
     @IBAction func easyBtnPushed(_ sender: UIButton) {
-        levelChoiceAction(sender, "easy")
+        levelChoiceAction(sender, "Easy")
     }
     @IBAction func mediumBtnPushed(_ sender: UIButton) {
-        levelChoiceAction(sender, "medium")
+        levelChoiceAction(sender, "Medium")
     }
     @IBAction func hardBtnPushed(_ sender: UIButton) {
-        levelChoiceAction(sender, "hard")
+        levelChoiceAction(sender, "Hard")
     }
     @IBAction func playBtnPushed(_ sender: UIButton) {
         moveToGame(selectedGame.game!)
@@ -101,7 +218,7 @@ class MainVC: UIViewController {
         if let destination = segue.destination as? MemoryGameVC{
             destination.title = "Memory"
             destination.difficulty = selectedGame
-            //destination.highScoreList = allScores
+            destination.highScoreList = allScores
         }
         
 //        if let destination = segue.destination as? SortingGameVC{
