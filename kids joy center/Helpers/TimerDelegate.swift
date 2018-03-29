@@ -14,6 +14,7 @@ class Time {
     var minutesImg: UIImage?
     var secondsImg: UIImage?
     var seconds1Img: UIImage?
+
     let timeImageArray: [UIImage] = [
         UIImage(named: "cartoon-number-0")!,
         UIImage(named: "cartoon-number-1")!,
@@ -24,7 +25,8 @@ class Time {
         UIImage(named: "cartoon-number-6")!,
         UIImage(named: "cartoon-number-7")!,
         UIImage(named: "cartoon-number-8")!,
-        UIImage(named: "cartoon-number-9")!]
+        UIImage(named: "cartoon-number-9")!
+    ]
     
     init(seconds: Int){
         self.seconds = seconds

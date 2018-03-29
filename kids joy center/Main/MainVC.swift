@@ -91,6 +91,7 @@ class MainVC: UIViewController {
         return highscoreEntry
     }
     
+    // Highscore inputs
     func setHighScore() {
         for i in 0..<allScores.count {
             for j in 0..<allScores[i].count{
@@ -113,17 +114,6 @@ class MainVC: UIViewController {
         
     }
     
-    func update(){
-        let highScoreData = NSKeyedArchiver.archivedData(withRootObject: allScores)
-        UserDefaults.standard.set(highScoreData, forKey: "allScores")
-        UserDefaults.standard.synchronize()
-    }
-    
-    func resetDefaults() {
-        UserDefaults.standard.removeObject(forKey: "allScores")
-        UserDefaults.standard.synchronize()
-    }
-    
     func showTable() {
         for i in 0..<allScores.count {
             for j in 0..<allScores[i].count{
@@ -133,16 +123,16 @@ class MainVC: UIViewController {
         }
     }
     
-
+    func update(){
+        let highScoreData = NSKeyedArchiver.archivedData(withRootObject: allScores)
+        UserDefaults.standard.set(highScoreData, forKey: "allScores")
+        UserDefaults.standard.synchronize()
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
+    func reset() {
+        UserDefaults.standard.removeObject(forKey: "allScores")
+        UserDefaults.standard.synchronize()
+    }
     
     @IBAction func memoryBtnPushed(_ sender: UIButton) {
         gameChoiceAction(sender, "Memory")
