@@ -41,8 +41,7 @@ class Time {
         self.secondsImg = timeImageArray[sec]
         self.seconds1Img = timeImageArray[sec1]
     }
-    
-    
+
     func formatedTime(time:TimeInterval) -> String {
         let minutes = Int(time)/60 % 60
         let seconds = Int(time) % 60

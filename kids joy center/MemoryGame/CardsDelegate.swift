@@ -54,7 +54,6 @@ class Cards {
             randomNumberSize = 10
             sizeOfBoard = 5
         } else {
-            print("Error in setUpArrayOfCards")
             return boardArray
         }
         //array to let us know if more than two cards have been set up
@@ -81,7 +80,6 @@ class Cards {
             }
             boardArray.append(subArray)
         }
-        print (boardArray)
         return boardArray
     }
     
@@ -99,7 +97,6 @@ class Cards {
         } else if self.difficulty == "Hard" {
             numberOfRandoms = 10
         } else {
-            print("Error in function uniqueRandomNumbers")
             return uniqueArray
         }
         var count = 0

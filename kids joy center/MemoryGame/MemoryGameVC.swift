@@ -10,7 +10,7 @@ import UIKit
 
 class MemoryGameVC: UIViewController {
 
-    var difficulty = GameSelector()
+    var thisDifficulty = GameSelector()
     var initBoard = Cards(difficulty: "")
     var match = matched(sizeRow: 0, sizeCol: 0)
     var cardsArray = [[UIButton]]()
@@ -28,19 +28,6 @@ class MemoryGameVC: UIViewController {
     let score = UIImageView(frame: CGRect(x: 925, y: 80, width: 20, height: 30))
     let score1 = UIImageView(frame: CGRect(x: 955, y: 80, width: 20, height: 30))
 
-    let numberImageArray: [UIImage] = [
-        UIImage(named: "cartoon-number-0")!, 
-        UIImage(named: "cartoon-number-1")!, 
-        UIImage(named: "cartoon-number-2")!, 
-        UIImage(named: "cartoon-number-3")!, 
-        UIImage(named: "cartoon-number-4")!, 
-        UIImage(named: "cartoon-number-5")!, 
-        UIImage(named: "cartoon-number-6")!, 
-        UIImage(named: "cartoon-number-7")!, 
-        UIImage(named: "cartoon-number-8")!, 
-        UIImage(named: "cartoon-number-9")!, 
-    ]
-
     override func viewDidLoad() {
         super.viewDidLoad()
         startGame()
@@ -50,9 +37,9 @@ class MemoryGameVC: UIViewController {
     func setUpTimer() -> Time {
         var gameTime: Time
 
-        if difficulty.difficulty == "Easy"{
+        if thisDifficulty.difficulty == "Easy"{
             gameTime = Time(seconds: 120)
-        } else if difficulty.difficulty == "Medium"{
+        } else if thisDifficulty.difficulty == "Medium"{
             gameTime = Time(seconds: 105)
         } else {
             gameTime = Time(seconds: 90)
@@ -65,7 +52,7 @@ class MemoryGameVC: UIViewController {
         tempScore = highScoreList[0]
         time = setUpTimer()
         time.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(MemoryGameVC.syncDigits)), userInfo: nil, repeats: true)
-        initBoard = Cards(difficulty: difficulty.difficulty!)
+        initBoard = Cards(difficulty: thisDifficulty.difficulty!)
         spawnBoard()
         timerUI()
         scoreUI()
@@ -84,7 +71,7 @@ class MemoryGameVC: UIViewController {
             time.updateImages(time: TimeInterval(time.seconds))
             seconds1.image = time.seconds1Img
             time.timer.invalidate()
-            presentLossAlert()
+            loss()
         }
     }
 
@@ -114,9 +101,9 @@ class MemoryGameVC: UIViewController {
 
             for j in 0..<col {
                 var card: UIButton
-                if difficulty.difficulty == "Easy" {
+                if thisDifficulty.difficulty == "Easy" {
                     card = UIButton(frame: CGRect(x: 198 + (135*j), y: 5 + (135*i), width: 125, height: 125))
-                } else if difficulty.difficulty == "Medium" {
+                } else if thisDifficulty.difficulty == "Medium" {
                     card = UIButton(frame: CGRect(x: 133 + (135*j), y: 5 + (135*i), width: 125, height: 125))
                 } else {
                     card = UIButton(frame: CGRect(x: 67 + (135*j), y: 5 + (135*i), width: 125, height: 125))
@@ -138,7 +125,6 @@ class MemoryGameVC: UIViewController {
         match = make
     }
 
-    // TODO: RESTART HERE
     @objc func flip(sender: UIButton) {
         let row = initBoard.arrayOfCards.count
         let col = initBoard.arrayOfCards[0].count
@@ -157,6 +143,15 @@ class MemoryGameVC: UIViewController {
                 }
             }
         }
+    }
+
+    func startScoreTimer() {
+        scoreSeconds = 0
+        scoreTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(MemoryGameVC.updateScoreTime)), userInfo: nil, repeats: true)
+    }
+
+    @objc func updateScoreTime() {
+        scoreSeconds = scoreSeconds + 1
     }
 
     // Countdown Timer interface
@@ -194,74 +189,38 @@ class MemoryGameVC: UIViewController {
         self.view.addSubview(score1)
     }
 
-    // TODO: WTF IS THIS
-    func startScoreTimer() {
-        scoreSeconds = 0
-        scoreTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(MemoryGameVC.updateScoreTime)), userInfo: nil, repeats: true)
-    }
-
-    func presentWinAlert() {
-        let alert = AlertMessage(viewController: self, score: finalScore)
-        alert.presentWinAlert()
-    }
-    
-    func presentLossAlert() {
-        let alert = AlertMessage(viewController: self, score: finalScore)
-        alert.endTimeAlert()
-    }
-    
-    
-    
-
-    
-    
-
-    
+    // Check if the picked card is a match
     func checkMatch(row: Int, col: Int) {
-        let storeCoordinates = coordinator()
-        storeCoordinates.row = row
-        storeCoordinates.column = col
+        let lastPick = coordinator()
+        lastPick.row = row
+        lastPick.column = col
+        let matchRow = pick.row
+        let matchCol = pick.column
+
         if pick.row == nil || (pick.row == row && pick.column == col){
-            pick = storeCoordinates
+            pick = lastPick
+            return
+        } else if initBoard.arrayOfCards[matchRow!][matchCol!].cardIdentifier == initBoard.arrayOfCards[row][col].cardIdentifier{
+            itMatched(row: matchRow!, col: matchCol!, row2: row, col2: col)
+            calculateScore()
+            updateScoreImage()
+            scoreTimer.invalidate()
+            pick.clearPick()
+            isDone()
+        } else {
+            cardsArray[matchRow!][matchCol!].setBackgroundImage(UIImage(named: "question"), for: .normal)
+            cardsArray[row][col].setBackgroundImage(UIImage(named: "question"), for: .normal)
+            pick.clearPick()
             return
         }
-        else {
-            let matchRow = pick.row
-            let matchCol = pick.column
-            if initBoard.arrayOfCards[matchRow!][matchCol!].cardIdentifier == initBoard.arrayOfCards[row][col].cardIdentifier {
-                updateSolved(row: matchRow!, col: matchCol!, row2: row, col2: col)
-                produceScore()
-                updateScoreImage()
-                scoreTimer.invalidate()
-                pick.clearPick()
-                if match.checkIfMatched() {
-                    time.timer.invalidate()
-                    checkHighScores()
-                    presentWinAlert()
-                }
-                return
-            } else {
-                cardsArray[matchRow!][matchCol!].setBackgroundImage(UIImage(named: "question"), for: .normal)
-                cardsArray[row][col].setBackgroundImage(UIImage(named: "question"), for: .normal)
-                pick.clearPick()
-                return
-            }
-        }
     }
-    
-    
 
-    
-    func updateSolved(row: Int, col: Int, row2: Int, col2: Int){
+    func itMatched(row: Int, col: Int, row2: Int, col2: Int){
         match.rowAndCol[row][col] = true
         match.rowAndCol[row2][col2] = true
     }
-    
-    @objc func updateScoreTime() {
-        scoreSeconds = scoreSeconds + 1
-    }
-    
-    func produceScore() {
+
+    func calculateScore() {
         if scoreSeconds <= 3 {
             finalScore += 5
         } else if scoreSeconds > 3 && scoreSeconds <= 7 {
@@ -270,41 +229,41 @@ class MemoryGameVC: UIViewController {
             finalScore += 3
         }
     }
-    
+
     func updateScoreImage() {
         score.image = numberImageArray[finalScore / 10]
         score1.image = numberImageArray[finalScore % 10]
     }
-    
+
+    func isDone() {
+        if match.checkIfDone() {
+            time.timer.invalidate()
+            checkHighScores()
+            win()
+        }
+    }
+
     func checkHighScores() {
         let potentialHS = ScoreTracker(gameType: "Memory", score: finalScore)
-        
-        
-        //   sortHighScore.remove(at: i)
-        
+
         for i in 0..<tempScore.count {
             if tempScore[i].score < finalScore {
                 tempScore.insert(potentialHS, at: i)
                 tempScore.remove(at: 5)
                 highScoreList[0] = tempScore
-                //       sortHighScore[i].score = finalScore
-                updateDatabase()
+                ScoreTracker.updateDatabase(highScoreList)
                 return
             }
-            
         }
     }
-    
-    func updateDatabase(){
-        let highScoreData = NSKeyedArchiver.archivedData(withRootObject: highScoreList)
-        UserDefaults.standard.set(highScoreData, forKey: "allScores")
-        UserDefaults.standard.synchronize()
+
+    func win() {
+        let alert = AlertMessage(viewController: self, score: finalScore)
+        alert.presentWinAlert()
     }
     
-    override func willMove(toParentViewController parent: UIViewController?) {
-        super.willMove(toParentViewController: parent)
-        if parent == nil {
-            time.timer.invalidate()
-        }
+    func loss() {
+        let alert = AlertMessage(viewController: self, score: finalScore)
+        alert.endTimeAlert()
     }
 }

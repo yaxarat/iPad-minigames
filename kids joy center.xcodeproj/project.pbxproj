@@ -22,7 +22,10 @@
 		55C5AD1C206B45DF006BB191 /* CardsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5AD1B206B45DF006BB191 /* CardsDelegate.swift */; };
 		55C5AD1E206B45FC006BB191 /* CardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5AD1D206B45FC006BB191 /* CardDelegate.swift */; };
 		55C5AD20206B4C67006BB191 /* AlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5AD1F206B4C67006BB191 /* AlertDelegate.swift */; };
+		6D7020672EA925BD21E87C2E /* Vehicles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7023E4FD06F632A68213BA /* Vehicles.swift */; };
 		6D7022E8A59AA32AA8E9A5EB /* CardHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7021D5FEBCCFCEAB6AB41C /* CardHandlerDelegate.swift */; };
+		6D7024AEDC6FA7C8790B3FB4 /* ImagesArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7028A9C140171108A1AF32 /* ImagesArray.swift */; };
+		6D702C9F99AFC31C3A58037D /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7025FB15076F7D691287F5 /* Vehicle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		55C5AD1D206B45FC006BB191 /* CardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDelegate.swift; sourceTree = "<group>"; };
 		55C5AD1F206B4C67006BB191 /* AlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDelegate.swift; sourceTree = "<group>"; };
 		6D7021D5FEBCCFCEAB6AB41C /* CardHandlerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHandlerDelegate.swift; sourceTree = "<group>"; };
+		6D7023E4FD06F632A68213BA /* Vehicles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicles.swift; sourceTree = "<group>"; };
+		6D7025FB15076F7D691287F5 /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		6D7028A9C140171108A1AF32 /* ImagesArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				55189826206A9B8B0075BF86 /* SortingGameVC.swift */,
+				6D7023E4FD06F632A68213BA /* Vehicles.swift */,
+				6D7025FB15076F7D691287F5 /* Vehicle.swift */,
 			);
 			path = SortingGame;
 			sourceTree = "<group>";
@@ -133,6 +141,7 @@
 				55C5AD15206B39AB006BB191 /* TimerDelegate.swift */,
 				55C5AD17206B3A8E006BB191 /* ScoreTrackerDelegate.swift */,
 				55C5AD1F206B4C67006BB191 /* AlertDelegate.swift */,
+				6D7028A9C140171108A1AF32 /* ImagesArray.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -222,6 +231,9 @@
 				55189827206A9B8B0075BF86 /* SortingGameVC.swift in Sources */,
 				55189810206A6F170075BF86 /* AppDelegate.swift in Sources */,
 				6D7022E8A59AA32AA8E9A5EB /* CardHandlerDelegate.swift in Sources */,
+				6D7020672EA925BD21E87C2E /* Vehicles.swift in Sources */,
+				6D702C9F99AFC31C3A58037D /* Vehicle.swift in Sources */,
+				6D7024AEDC6FA7C8790B3FB4 /* ImagesArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

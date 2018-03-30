@@ -225,7 +225,7 @@
         <!--Baloon GameVC-->
         <scene sceneID="kx5-Ah-4qm">
             <objects>
-                <viewController id="2jI-jS-umz" customClass="BaloonGameVC" customModule="kids_joy_center" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2jI-jS-umz" customClass="BalloonGameVC" customModule="kids_joy_center" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="inE-CC-ak2">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -209,15 +209,15 @@ class MainVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? MemoryGameVC{
             destination.title = "Memory"
-            destination.difficulty = selectedGame
+            destination.thisDifficulty = selectedGame
             destination.highScoreList = allScores
         }
         
-//        if let destination = segue.destination as? SortingGameVC{
-//            destination.title = "Sort The Vehicles"
-//            destination.ourDifficulty = selectedGame
-//            destination.highScoreList = ScoreTracker
-//        }
+        if let destination = segue.destination as? SortingGameVC{
+            destination.title = "Sort The Vehicles"
+            destination.thisDifficulty = selectedGame
+            destination.highScoreList = allScores
+        }
 //
 //        if let destination = segue.destination as? BaloonGameVC{
 //            destination.title = "Balloon Pop"

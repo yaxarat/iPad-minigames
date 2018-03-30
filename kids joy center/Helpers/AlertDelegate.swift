@@ -15,26 +15,20 @@ class AlertMessage {
         self.viewController = viewController
         self.score = score
     }
-    
-    func endTimeAlert() {
-        let alert = UIAlertController(title: "GAME OVER", message: "Times UP", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Play Again", style: .default, handler: { action in
-            //self.viewController!.resetView()
-        }))
-        alert.addAction(UIAlertAction(title: "Go Back", style: .cancel, handler: { action in
+
+    func presentWinAlert() {
+        let alert = UIAlertController(title: "Great Job", message: "Your Score Was: \(score)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Return to Menu", style: .cancel, handler: { action in
             _ = self.viewController!.navigationController?.popViewController(animated: true)
+
         }))
         self.viewController!.present(alert, animated: true, completion: nil)
     }
     
-    func presentWinAlert() {
-        let alert = UIAlertController(title: "You Win", message: "Score: \(score)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Go Back", style: .cancel, handler: { action in
+    func endTimeAlert() {
+        let alert = UIAlertController(title: "Ouch!", message: "Time is UP", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Return to Menu", style: .cancel, handler: { action in
             _ = self.viewController!.navigationController?.popViewController(animated: true)
-            
-        }))
-        alert.addAction(UIAlertAction(title:"Play Again" , style: .default, handler: { action in
-            //self.viewController!.resetView()
         }))
         self.viewController!.present(alert, animated: true, completion: nil)
     }

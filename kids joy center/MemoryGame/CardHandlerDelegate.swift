@@ -22,20 +22,19 @@ class matched {
         for i in 0..<sizeRow {
             let arrayToAppend = [Bool](repeating: false, count: sizeCol)
             self.rowAndCol.append(arrayToAppend)
-            print("\(rowAndCol[i])")
         }
     }
 
-    func checkIfMatched() -> Bool {
-        var answer = true
+    func checkIfDone() -> Bool {
+        var bool = true
         for i in 0..<rowAndCol.count {
             for j in 0..<rowAndCol[0].count {
                 if !rowAndCol[i][j]{
-                    answer = false
-                    return answer
+                    bool = false
+                    return bool
                 }
             }
         }
-        return answer
+        return bool
     }
 }
