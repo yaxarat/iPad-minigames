@@ -10,6 +10,12 @@ import UIKit
 
 class MemoryGameVC: UIViewController {
 
+    let seconds = UIImageView(frame: CGRect(x: 180, y: 80, width: 20, height: 30))
+    let seconds1 = UIImageView(frame: CGRect(x: 210, y: 80, width: 20, height: 30))
+    let minutes = UIImageView(frame: CGRect(x: 140, y: 80, width: 20, height: 30))
+    let score = UIImageView(frame: CGRect(x: 925, y: 80, width: 20, height: 30))
+    let score1 = UIImageView(frame: CGRect(x: 955, y: 80, width: 20, height: 30))
+
     var thisDifficulty = GameSelector()
     var initBoard = Cards(difficulty: "")
     var match = matched(sizeRow: 0, sizeCol: 0)
@@ -21,12 +27,6 @@ class MemoryGameVC: UIViewController {
     var finalScore = 0
     var highScoreList: [[ScoreTracker]]!
     var tempScore: [ScoreTracker]!
-
-    let seconds = UIImageView(frame: CGRect(x: 180, y: 80, width: 20, height: 30))
-    let seconds1 = UIImageView(frame: CGRect(x: 210, y: 80, width: 20, height: 30))
-    let minutes = UIImageView(frame: CGRect(x: 140, y: 80, width: 20, height: 30))
-    let score = UIImageView(frame: CGRect(x: 925, y: 80, width: 20, height: 30))
-    let score1 = UIImageView(frame: CGRect(x: 955, y: 80, width: 20, height: 30))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -251,7 +251,7 @@ class MemoryGameVC: UIViewController {
                 tempScore.insert(potentialHS, at: i)
                 tempScore.remove(at: 5)
                 highScoreList[0] = tempScore
-                ScoreTracker.updateDatabase(highScoreList)
+                ScoreTracker.syncScoreBoard(highScoreList)
                 return
             }
         }
@@ -259,11 +259,11 @@ class MemoryGameVC: UIViewController {
 
     func win() {
         let alert = AlertMessage(viewController: self, score: finalScore)
-        alert.presentWinAlert()
+        alert.winAlert()
     }
     
     func loss() {
         let alert = AlertMessage(viewController: self, score: finalScore)
-        alert.endTimeAlert()
+        alert.loseAlert()
     }
 }

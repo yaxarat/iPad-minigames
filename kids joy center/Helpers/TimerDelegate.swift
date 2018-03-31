@@ -14,19 +14,6 @@ class Time {
     var minutesImg: UIImage?
     var secondsImg: UIImage?
     var seconds1Img: UIImage?
-
-    let timeImageArray: [UIImage] = [
-        UIImage(named: "cartoon-number-0")!,
-        UIImage(named: "cartoon-number-1")!,
-        UIImage(named: "cartoon-number-2")!,
-        UIImage(named: "cartoon-number-3")!,
-        UIImage(named: "cartoon-number-4")!,
-        UIImage(named: "cartoon-number-5")!,
-        UIImage(named: "cartoon-number-6")!,
-        UIImage(named: "cartoon-number-7")!,
-        UIImage(named: "cartoon-number-8")!,
-        UIImage(named: "cartoon-number-9")!
-    ]
     
     init(seconds: Int){
         self.seconds = seconds
@@ -42,7 +29,7 @@ class Time {
         self.seconds1Img = timeImageArray[sec1]
     }
 
-    func formatedTime(time:TimeInterval) -> String {
+    func formatting(time:TimeInterval) -> String {
         let minutes = Int(time)/60 % 60
         let seconds = Int(time) % 60
         return String(format:"%01i:%02i",minutes,seconds)

@@ -27,7 +27,7 @@ class SortingGameVC: UIViewController {
     var originalLocations = [CGPoint]()
     var getVehicles = Vehicles(difficulty: "")
     var vehicleImage: UIImage!
-    var timer = Time(seconds: 0)
+    var time = Time(seconds: 0)
     var scoreTimer = Timer()
     var scoreSeconds = 0
     var finalScore = 0
@@ -49,8 +49,8 @@ class SortingGameVC: UIViewController {
 
     func allSetupProcess() {
         // Timers
-        timer = setUpTimer()
-        timer.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(SortingGameVC.updateTimeUI)), userInfo: nil, repeats: true)
+        time = setUpTimer()
+        time.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(SortingGameVC.updateTimeUI)), userInfo: nil, repeats: true)
         scoreTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(SortingGameVC.updateScoreTime)), userInfo: nil, repeats: true)
 
         // Gesture
@@ -83,17 +83,17 @@ class SortingGameVC: UIViewController {
     }
 
     @objc func updateTimeUI() {
-        if timer.seconds > 0{
-            timer.updateImages(time: TimeInterval(timer.seconds))
-            minutes.image = timer.minutesImg
-            seconds.image = timer.secondsImg
-            seconds1.image = timer.seconds1Img
+        if time.seconds > 0{
+            time.updateImages(time: TimeInterval(time.seconds))
+            minutes.image = time.minutesImg
+            seconds.image = time.secondsImg
+            seconds1.image = time.seconds1Img
 
-            timer.seconds -= 1
+            time.seconds -= 1
         } else {
-            timer.updateImages(time: TimeInterval(timer.seconds))
-            seconds1.image = timer.seconds1Img
-            timer.timer.invalidate()
+            time.updateImages(time: TimeInterval(time.seconds))
+            seconds1.image = time.seconds1Img
+            time.timer.invalidate()
             loss()
         }
     }
@@ -194,7 +194,7 @@ class SortingGameVC: UIViewController {
             }
         }
         scoreTimer.invalidate()
-        timer.timer.invalidate()
+        time.timer.invalidate()
         checkHighScores()
         win()
     }
@@ -207,15 +207,15 @@ class SortingGameVC: UIViewController {
         self.view.addSubview(timeUIPos)
 
         minutes.contentMode = .scaleAspectFill
-        minutes.image = timer.minutesImg
+        minutes.image = time.minutesImg
         self.view.addSubview(minutes)
 
         seconds.contentMode = .scaleAspectFill
-        seconds.image = timer.secondsImg
+        seconds.image = time.secondsImg
         self.view.addSubview(seconds)
 
         seconds1.contentMode = .scaleAspectFill
-        seconds1.image = timer.seconds1Img
+        seconds1.image = time.seconds1Img
         self.view.addSubview(seconds1)
 
         scoreUI()
@@ -251,7 +251,7 @@ class SortingGameVC: UIViewController {
                 tempScore.insert(potentialHS, at: i)
                 tempScore.remove(at: 5)
                 highScoreList[1] = tempScore
-                ScoreTracker.updateDatabase(highScoreList)
+                ScoreTracker.syncScoreBoard(highScoreList)
                 return
             }
 
@@ -294,11 +294,11 @@ class SortingGameVC: UIViewController {
 
     func win() {
         let alert = AlertMessage(viewController: self, score: finalScore)
-        alert.presentWinAlert()
+        alert.winAlert()
     }
 
     func loss() {
         let alert = AlertMessage(viewController: self, score: finalScore)
-        alert.endTimeAlert()
+        alert.loseAlert()
     }
 }

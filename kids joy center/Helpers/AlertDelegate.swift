@@ -16,7 +16,7 @@ class AlertMessage {
         self.score = score
     }
 
-    func presentWinAlert() {
+    func winAlert() {
         let alert = UIAlertController(title: "Great Job", message: "Your Score Was: \(score)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Return to Menu", style: .cancel, handler: { action in
             _ = self.viewController!.navigationController?.popViewController(animated: true)
@@ -25,10 +25,17 @@ class AlertMessage {
         self.viewController!.present(alert, animated: true, completion: nil)
     }
     
-    func endTimeAlert() {
+    func loseAlert() {
         let alert = UIAlertController(title: "Ouch!", message: "Time is UP", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Return to Menu", style: .cancel, handler: { action in
             _ = self.viewController!.navigationController?.popViewController(animated: true)
+        }))
+        self.viewController!.present(alert, animated: true, completion: nil)
+    }
+
+    func balloonAlert() {
+        let alert = UIAlertController(title: "Ehm!", message: "That's enough game for today!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Got it...", style: .cancel, handler: { action in
         }))
         self.viewController!.present(alert, animated: true, completion: nil)
     }

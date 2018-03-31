@@ -24,7 +24,7 @@ class MainVC: UIViewController {
     var sortingHighScores = [ScoreTracker](repeatElement(ScoreTracker(gameType: "Sort", score: 0), count: 5))
     var balloonHighScores = [ScoreTracker](repeatElement(ScoreTracker(gameType: "Balloon",score: 0), count: 5))
     var selectedGame = GameSelector()
-    var allScores: [[ScoreTracker]]!
+    var scoreBoard: [[ScoreTracker]]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +40,10 @@ class MainVC: UIViewController {
     
     // Loads highscore pop up
     func setupHighScore() {
-        allScores = [memoryHighScores, sortingHighScores, balloonHighScores]
+        scoreBoard = [memoryHighScores, sortingHighScores, balloonHighScores]
         
         if let readAllScores = UserDefaults.standard.object(forKey: "allScores") as? Data {
-            allScores = NSKeyedUnarchiver.unarchiveObject(with: readAllScores) as! [[ScoreTracker]]
+            scoreBoard = NSKeyedUnarchiver.unarchiveObject(with: readAllScores) as! [[ScoreTracker]]
         } else {
             setHighScore()
         }
@@ -77,7 +77,7 @@ class MainVC: UIViewController {
     // Display function for the score presentation
     func displayScore(gameType: Int, Location: Int, view: UIView) {
         for i in 0..<5 {
-            let currentScore = String(describing: allScores[gameType][i].score)
+            let currentScore = String(describing: scoreBoard[gameType][i].score)
             view.addSubview(entry(message:currentScore, yCoordinate: Location + (i*30)))
         }
     }
@@ -93,19 +93,19 @@ class MainVC: UIViewController {
     
     // Highscore inputs
     func setHighScore() {
-        for i in 0..<allScores.count {
-            for j in 0..<allScores[i].count{
+        for i in 0..<scoreBoard.count {
+            for j in 0..<scoreBoard[i].count{
                 if i == 0 {
                     let newHS = ScoreTracker(gameType: "Memory", score: 0)
-                    allScores[i][j] = newHS
+                    scoreBoard[i][j] = newHS
                     update()
                 } else if i == 1 {
                     let newHS = ScoreTracker(gameType: "Sort", score: 0)
-                    allScores[i][j] = newHS
+                    scoreBoard[i][j] = newHS
                     update()
                 } else if i == 2 {
                     let newHS = ScoreTracker(gameType: "Balloon", score: 0)
-                    allScores[i][j] = newHS
+                    scoreBoard[i][j] = newHS
                     update()
                 }
             }
@@ -115,16 +115,16 @@ class MainVC: UIViewController {
     }
     
     func showTable() {
-        for i in 0..<allScores.count {
-            for j in 0..<allScores[i].count{
-                print(allScores[i][j].game)
-                print("\(allScores[i][j].score)")
+        for i in 0..<scoreBoard.count {
+            for j in 0..<scoreBoard[i].count{
+                print(scoreBoard[i][j].game)
+                print("\(scoreBoard[i][j].score)")
             }
         }
     }
     
     func update(){
-        let highScoreData = NSKeyedArchiver.archivedData(withRootObject: allScores)
+        let highScoreData = NSKeyedArchiver.archivedData(withRootObject: scoreBoard)
         UserDefaults.standard.set(highScoreData, forKey: "allScores")
         UserDefaults.standard.synchronize()
     }
@@ -202,27 +202,26 @@ class MainVC: UIViewController {
         } else if game == "Sorting" {
             performSegue(withIdentifier: "toSortingGameVC", sender: self)
         } else if game == "Balloon" {
-            performSegue(withIdentifier: "toBalloonGameVC", sender: self)
+            let alert = AlertMessage(viewController: self, score: 000)
+            alert.balloonAlert()
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? MemoryGameVC{
-            destination.title = "Memory"
+            destination.title = "Memory Cards!"
             destination.thisDifficulty = selectedGame
-            destination.highScoreList = allScores
+            destination.highScoreList = scoreBoard
         }
         
         if let destination = segue.destination as? SortingGameVC{
-            destination.title = "Sort The Vehicles"
+            destination.title = "Sort These!"
             destination.thisDifficulty = selectedGame
-            destination.highScoreList = allScores
+            destination.highScoreList = scoreBoard
         }
 //
-//        if let destination = segue.destination as? BaloonGameVC{
-//            destination.title = "Balloon Pop"
-//            destination.ourDifficulty = selectedGame
-//            destination.highScoreList = ScoreTracker
+//        if let destination = segue.destination as? BalloonGameVC{
+//
 //        }
     }
     

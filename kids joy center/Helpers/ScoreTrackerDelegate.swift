@@ -27,7 +27,7 @@ class ScoreTracker: NSObject, NSCoding  {
         score = aDecoder.decodeInteger(forKey:"Score")
     }
 
-    class func updateDatabase(_ list: [[ScoreTracker]]!) {
+    class func syncScoreBoard(_ list: [[ScoreTracker]]!) {
         let highScoreData = NSKeyedArchiver.archivedData(withRootObject: list)
         UserDefaults.standard.set(highScoreData, forKey: "allScores")
         UserDefaults.standard.synchronize()
